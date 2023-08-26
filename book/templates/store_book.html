@@ -4,7 +4,7 @@
 
 <div style="width: 50%; margin:auto">
     <h1>Welcome TO Book Store Management</h1>
-    <form method="post">
+    <form method="post" method="/show_books">
         {% csrf_token %}
         {{form|crispy}}
         <button class="btn btn-primary" type="submit">Submit</button>
