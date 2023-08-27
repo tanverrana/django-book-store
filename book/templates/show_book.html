@@ -1,4 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>This is for test(Show book)</h1>
+<div style="width: 80%; margin:auto">
+    <h2>List OF Books</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Book Name</th>
+                <th scope="col">Author Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">First Publication</th>
+                <th scope="col">Last Publication</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr>
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.book_name}}</td>
+                <td>{{item.author}}</td>
+                <td>{{item.category}}</td>
+                <td>{{item.first_pub}}</td>
+                <td>{{item.last_pub}}</td>
+            </tr>
+            {% endfor %}
+
+
+
+        </tbody>
+    </table>
+</div>
 {% endblock %}
