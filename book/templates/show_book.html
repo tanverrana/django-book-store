@@ -2,7 +2,7 @@
 {% block content %}
 <div style="width: 80%; margin:auto">
     <h2>List OF Books</h2>
-    {% if data %}
+    {% if booklist %}
     <table class="table table-striped">
         <thead>
             <tr>
@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for item in data %}
+            {% for item in booklist %}
             <tr>
                 <th scope="row">{{item.id}}</th>
                 <td>{{item.book_name}}</td>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from book.forms import BookStoreForm
 from book.models import BookStoreModel
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 # Create your views here.
 
 # function based view
@@ -12,12 +12,12 @@ from django.views.generic import TemplateView
 class MyTemplateView(TemplateView):
     template_name = 'home.html'
 
+# class based view
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context = {'name': 'Tanver', 'age': 23}
         context.update(kwargs)
         return context
-        # class based view
 
 
 def store_book(request):
@@ -32,9 +32,15 @@ def store_book(request):
     return render(request, 'store_book.html', {'form': book})
 
 
-def show_books(request):
-    book = BookStoreModel.objects.all()
-    return render(request, 'show_book.html', {'data': book})
+# def show_books(request):
+#     book = BookStoreModel.objects.all()
+#     return render(request, 'show_book.html', {'data': book})
+
+# class based  view
+class BookListView(ListView):
+    model = BookStoreModel
+    template_name = 'show_book.html'
+    context_object_name = 'booklist'
 
 
 def edit_book(request, id):
