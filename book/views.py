@@ -42,6 +42,9 @@ class BookListView(ListView):
     template_name = 'show_book.html'
     context_object_name = 'booklist'
 
+    def get_queryset(self):
+        return BookStoreModel.objects.filter(id='3')
+
 
 def edit_book(request, id):
     book = BookStoreModel.objects.get(pk=id)
