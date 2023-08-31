@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from book.forms import BookStoreForm
 from book.models import BookStoreModel
+from django.views.generic import TemplateView
 # Create your views here.
 
-
-def home(request):
-    return render(request, 'store_book.html')
+# function based view
+# def home(request):
+#     return render(request, 'home.html')
+# class based view
 
 
 def store_book(request):
