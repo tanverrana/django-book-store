@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from django.shortcuts import render, redirect
 from book.forms import BookStoreForm
 from book.models import BookStoreModel
@@ -42,8 +43,14 @@ class BookListView(ListView):
     template_name = 'show_book.html'
     context_object_name = 'booklist'
 
-    def get_queryset(self):
-        return BookStoreModel.objects.filter(id='3')
+    # def get_queryset(self):
+    #     return BookStoreModel.objects.filter(id='3')
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context = {'Shakib': BookStoreModel.objects.all().order_by('author')}
+    #     return context
+    ordering = ['category']
 
 
 def edit_book(request, id):
