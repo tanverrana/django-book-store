@@ -7,7 +7,17 @@ from django.views.generic import TemplateView
 # function based view
 # def home(request):
 #     return render(request, 'home.html')
-# class based view
+
+
+class MyTemplateView(TemplateView):
+    template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = {'name': 'Tanver', 'age': 23}
+        context.update(kwargs)
+        return context
+        # class based view
 
 
 def store_book(request):

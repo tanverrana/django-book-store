@@ -3,7 +3,9 @@ from django.urls import path
 from . import views
 urlpatterns = [
     # path('', home),
-    path('', views.TemplateView.as_view(template_name='home.html')),
+    # path('', views.TemplateView.as_view(template_name='home.html')),
+    path('<int:roll>/', views.MyTemplateView.as_view(),
+         {'author': 'Rana'}, name='homepage'),
     path('store_new_book/', views.store_book, name='storebook'),
     path('show_books/', views.show_books, name='show_books'),
     path('edit_book/<int:id>', views.edit_book, name='edit_book'),
