@@ -2,7 +2,7 @@ from typing import Any, Dict
 from django.shortcuts import render, redirect
 from book.forms import BookStoreForm
 from book.models import BookStoreModel
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 # Create your views here.
 
 # function based view
@@ -51,6 +51,13 @@ class BookListView(ListView):
     #     context = {'Shakib': BookStoreModel.objects.all().order_by('author')}
     #     return context
     ordering = ['category']
+
+
+class BookDetailsView(DetailView):
+    model = BookStoreModel
+    template_name = 'book_details.html'
+    context_object_name = 'item'
+    pk_url_kwarg = 'id'
 
 
 def edit_book(request, id):
